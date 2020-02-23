@@ -1,25 +1,40 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Box from '@material-ui/core/Box';
+import { ThemeProvider } from '@material-ui/core';
+
+import Homepage from './pages/Homepage';
+import SideMenu from './components/SideMenu';
+import LoadingStatePage from './pages/LoadingStatePage';
+import ToggleAnimationPage from './pages/ToggleAnimationPage';
+import SwipeToDeletePage from './pages/SwipeToDeletePage';
+import theme from './theme';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Box display="flex" minHeight="100%">
+        <CssBaseline />
+        <Router>
+          <SideMenu />
+          <Switch>
+            <Route path="/loading-state">
+              <LoadingStatePage />
+            </Route>
+            <Route path="/toggle-animation">
+              <ToggleAnimationPage />
+            </Route>
+            <Route path="/swipe-to-dismiss">
+              <SwipeToDeletePage />
+            </Route>
+            <Route path="/">
+              <Homepage />
+            </Route>
+          </Switch>
+        </Router>
+      </Box>
+    </ThemeProvider>
   );
 }
 
