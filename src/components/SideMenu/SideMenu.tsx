@@ -34,7 +34,7 @@ export default function SideMenu() {
   return (
     <Drawer variant="permanent" anchor="left" classes={classes}>
       <Divider />
-      <List>
+      <List dense>
         {pages.map(({ id, title, route }) => (
           <ListItemLink key={id} to={route} primary={title} />
         ))}
