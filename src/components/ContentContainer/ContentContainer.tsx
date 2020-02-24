@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 'calc(100% - 32px)',
+    height: 'calc(100vh - 32px)',
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
     overflow: 'auto',

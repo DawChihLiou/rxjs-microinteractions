@@ -1,0 +1,163 @@
+interface Member {
+  login: string;
+  id: number;
+  avatar_url: string;
+  html_url: string;
+  name: string;
+  blog: string;
+  location: string;
+  bio: null | string;
+  public_repos: number;
+  public_gists: number;
+  twitter_url: string;
+}
+
+export const members: Member[] = [
+  {
+    login: 'benlesh',
+    id: 1540597,
+    avatar_url: 'https://avatars0.githubusercontent.com/u/1540597?v=4',
+    html_url: 'https://github.com/benlesh',
+    name: 'Ben Lesh',
+    blog: 'http://twitter.com/benlesh',
+    location: 'Austin, TX',
+    bio: null,
+    public_repos: 115,
+    public_gists: 32,
+    twitter_url: 'https://twitter.com/BenLesh',
+  },
+  {
+    login: 'david-driscoll',
+    id: 1269157,
+    avatar_url: 'https://avatars0.githubusercontent.com/u/1269157?v=4',
+    html_url: 'https://github.com/david-driscoll',
+    name: 'David Driscoll',
+    blog: 'http://david-driscoll.github.io',
+    location: 'Cary, North Carolina',
+    bio: null,
+    public_repos: 131,
+    public_gists: 11,
+    twitter_url: 'https://twitter.com/david_dotnet',
+  },
+  {
+    login: 'cartant',
+    id: 3878593,
+    avatar_url: 'https://avatars1.githubusercontent.com/u/3878593?v=4',
+    html_url: 'https://github.com/cartant',
+    name: 'Nicholas Jamieson',
+    blog: 'https://ncjamieson.com',
+    location: 'Brisbane, Australia',
+    bio:
+      'RxJS core team member; front-end developer at Rexlabs; mentor; speaker; open-source contributor',
+    public_repos: 87,
+    public_gists: 136,
+    twitter_url: 'https://twitter.com/ncjamieson',
+  },
+  {
+    login: 'kwonoj',
+    id: 1210596,
+    avatar_url: 'https://avatars2.githubusercontent.com/u/1210596?v=4',
+    html_url: 'https://github.com/kwonoj',
+    name: 'OJ Kwon',
+    blog: 'https://kwonoj.github.io',
+    location: 'Bay Area',
+    bio: 'https://twitter.com/_ojkwon',
+    public_repos: 54,
+    public_gists: 0,
+    twitter_url: 'https://twitter.com/_ojkwon',
+  },
+  {
+    login: 'trxcllnt',
+    id: 178183,
+    avatar_url: 'https://avatars0.githubusercontent.com/u/178183?v=4',
+    html_url: 'https://github.com/trxcllnt',
+    name: 'Paul Taylor',
+    blog: '',
+    location: 'San Francisco, CA',
+    bio:
+      'SE @NVIDIA on @rapidsai, contributor @apache Arrow, @ReactiveX Rx/Ix JS. Formerly @graphistry, @Netflix, @lab49',
+    public_repos: 179,
+    public_gists: 63,
+    twitter_url: 'https://twitter.com/trxcllnt',
+  },
+  {
+    login: 'ladyleet',
+    id: 8270563,
+    avatar_url: 'https://avatars0.githubusercontent.com/u/8270563?v=4',
+    html_url: 'https://github.com/ladyleet',
+    name: 'Tracy Lee',
+    blog: 'http://thisdot.co',
+    location: 'Palo Alto, CA and Raleigh, NC',
+    bio: null,
+    public_repos: 143,
+    public_gists: 24,
+    twitter_url: 'https://twitter.com/ladyleet',
+  },
+  {
+    login: 'ashwin-sureshkumar',
+    id: 4744080,
+    avatar_url: 'https://avatars3.githubusercontent.com/u/4744080?v=4',
+    html_url: 'https://github.com/ashwin-sureshkumar',
+    name: 'Ashwin Sureshkumar',
+    blog: '',
+    location: 'Toronto, Canada',
+    bio: null,
+    public_repos: 28,
+    public_gists: 42,
+    twitter_url: 'https://twitter.com/Sureshkumar_Ash',
+  },
+  {
+    login: 'btroncone',
+    id: 5085101,
+    avatar_url: 'https://avatars1.githubusercontent.com/u/5085101?v=4',
+    html_url: 'https://github.com/btroncone',
+    name: 'Brian Troncone',
+    blog: 'http://twitter.com/btroncone',
+    location: 'Louisville, KY',
+    bio: 'JavaScript Enthusiast',
+    public_repos: 54,
+    public_gists: 9,
+    twitter_url: 'http://twitter.com/btroncone',
+  },
+  {
+    login: 'JWO719',
+    id: 6104311,
+    avatar_url: 'https://avatars0.githubusercontent.com/u/6104311?v=4',
+    html_url: 'https://github.com/JWO719',
+    name: 'Jan-Niklas W.',
+    blog: 'https://twitter.com/niklas-wortmann',
+    location: 'Germany',
+    bio: null,
+    public_repos: 25,
+    public_gists: 1,
+    twitter_url: 'https://twitter.com/niklas_wortmann',
+  },
+  {
+    login: 'knitcodemonkey',
+    id: 1584489,
+    avatar_url: 'https://avatars2.githubusercontent.com/u/1584489?v=4',
+    html_url: 'https://github.com/knitcodemonkey',
+    name: 'Jen Luker',
+    blog: 'https://jenluker.com',
+    location: 'Orem, Utah',
+    bio:
+      'Jen Luker is a public speaker, Senior Frontend Engineer, sometimes Engineering Manager, and knitter extraordinaire, who is always looking for a better way.',
+    public_repos: 43,
+    public_gists: 4,
+    twitter_url: 'https://twitter.com/knitcodemonkey',
+  },
+  {
+    login: 'sumitarora',
+    id: 198247,
+    avatar_url: 'https://avatars0.githubusercontent.com/u/198247?v=4',
+    html_url: 'https://github.com/sumitarora',
+    name: 'Sumit Arora',
+    blog: 'http://www.arorasumit.com/',
+    location: 'Toronto, Canada',
+    bio:
+      'Software Engineer, Code Phanatic, #Punjabi Music Lover, Always Learning @angular-redux @rangle #Angular-CLI #Augury #BeHappyKeepSmiling 😄 :man_dancing: 🎉 ',
+    public_repos: 92,
+    public_gists: 1,
+    twitter_url: 'https://twitter.com/arorasumit',
+  },
+];
