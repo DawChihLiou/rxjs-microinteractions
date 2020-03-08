@@ -23,9 +23,9 @@ export default function LoadingStatePage() {
     () =>
       timer(0, 3000).pipe(
         take(10),
-        map(number => messages[number])
+        map(number => messages[number]),
       ),
-    ''
+    '',
   );
 
   return (

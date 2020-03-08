@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme =>
       marginBottom: theme.spacing(2),
       marginRight: theme.spacing(2),
     },
-  })
+  }),
 );
 
 export default function ToggleAnimationPage() {
@@ -54,7 +54,7 @@ export default function ToggleAnimationPage() {
 
   const handleClick = useCallback(
     (index: number) => () => setSelectedIndex(index),
-    []
+    [],
   );
 
   const showFab = useObservable<boolean, [number]>(
@@ -67,12 +67,12 @@ export default function ToggleAnimationPage() {
             // i (300ms) (i|)
             take(2),
             // x (300ms) (o|)
-            map(number => (number === 0 ? false : input !== -1))
-          )
-        )
+            map(number => (number === 0 ? false : input !== -1)),
+          ),
+        ),
       ),
     false,
-    [selectedIndex]
+    [selectedIndex],
   );
 
   return (

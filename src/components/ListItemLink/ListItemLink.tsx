@@ -22,7 +22,7 @@ export default function ListItemLink(props: ListItemLinkProps) {
       React.forwardRef<any, Omit<RouterLinkProps, 'to'>>((itemProps, ref) => (
         <RouterLink to={to} ref={ref} {...itemProps} />
       )),
-    [to]
+    [to],
   );
 
   return (

@@ -43,18 +43,18 @@ const useStyles = makeStyles(theme =>
         cursor: 'grabbing',
       },
     },
-  })
+  }),
 );
 
 const trigger = (px: number): boolean => Math.abs(px) > 100;
 
 const swipeMove = merge(
   fromEvent<React.TouchEvent>(document, 'touchmove'),
-  fromEvent<React.MouseEvent>(document, 'mousemove')
+  fromEvent<React.MouseEvent>(document, 'mousemove'),
 );
 const swipeEnd = merge(
   fromEvent<React.TouchEvent>(document, 'touchend'),
-  fromEvent<React.MouseEvent>(document, 'mouseup')
+  fromEvent<React.MouseEvent>(document, 'mouseup'),
 );
 
 export default function SwipeToDeletePage() {
@@ -67,6 +67,7 @@ export default function SwipeToDeletePage() {
     event$ =>
       event$.pipe(
         tap(startEvent => startEvent.persist()),
+        // calculate dx
         switchMap(startEvent =>
           swipeMove.pipe(
             takeUntil(swipeEnd),
@@ -85,20 +86,21 @@ export default function SwipeToDeletePage() {
               if (startEvent.type === 'touchstart') {
                 return Math.round(
                   clientX -
-                    (startEvent as React.TouchEvent).targetTouches[0].clientX
+                    (startEvent as React.TouchEvent).targetTouches[0].clientX,
                 );
               }
               if (startEvent.type === 'mousedown') {
                 return Math.round(
-                  clientX - (startEvent as React.MouseEvent).clientX
+                  clientX - (startEvent as React.MouseEvent).clientX,
                 );
               }
               return acc;
-            }, 0)
-          )
-        )
+            }, 0),
+          ),
+        ),
+        tap(console.log),
       ),
-    0
+    0,
   );
   const [handleLastPosition, isIn] = useEventCallback<
     React.TouchEvent | React.MouseEvent,
@@ -109,10 +111,10 @@ export default function SwipeToDeletePage() {
       event$.pipe(
         tap(event => event.persist()),
         withLatestFrom(state$),
-        map(([event, [delta]]) => (trigger(delta) ? false : true))
+        map(([event, [delta]]) => (trigger(delta) ? false : true)),
       ),
     true,
-    [dx]
+    [dx],
   );
 
   return (
