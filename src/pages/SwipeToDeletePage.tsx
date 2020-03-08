@@ -98,7 +98,6 @@ export default function SwipeToDeletePage() {
             }, 0),
           ),
         ),
-        tap(console.log),
       ),
     0,
   );
@@ -127,7 +126,12 @@ export default function SwipeToDeletePage() {
         justifyContent="center"
       >
         <List className={classes.root}>
-          <Slide direction="left" in={isIn} mountOnEnter unmountOnExit>
+          <Slide
+            direction={dx > 0 ? 'left' : 'right'}
+            in={isIn}
+            mountOnEnter
+            unmountOnExit
+          >
             <div>
               <div
                 onTouchStart={handleSwipe as (e: React.TouchEvent) => void}
