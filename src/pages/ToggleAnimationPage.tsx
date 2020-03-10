@@ -14,7 +14,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import Zoom from '@material-ui/core/Zoom';
 import { useObservable } from 'rxjs-hooks';
 import { mergeMap, take, map } from 'rxjs/operators';
-import { timer } from 'rxjs';
+import { interval } from 'rxjs';
 
 import ContentContainer from '../components/ContentContainer';
 import { members } from '../utils/rxCoreTeam';
@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme =>
   createStyles({
     root: {
       width: '100%',
-      maxWidth: 520,
       backgroundColor: theme.palette.background.paper,
     },
     inline: {
@@ -33,11 +32,9 @@ const useStyles = makeStyles(theme =>
       fontSize: 14,
     },
     fab: {
-      position: 'fixed',
+      position: 'absolute',
       bottom: theme.spacing(4),
       right: theme.spacing(4),
-      marginBottom: theme.spacing(2),
-      marginRight: theme.spacing(2),
     },
   }),
 );
@@ -63,7 +60,7 @@ export default function ToggleAnimationPage() {
         // input:  i---------------(i|)
         // output: x (300ms) o-----x (300ms) (o|)
         mergeMap(([input]) =>
-          timer(0, 300).pipe(
+          interval(300).pipe(
             // i (300ms) (i|)
             take(2),
             // x (300ms) (o|)
@@ -79,57 +76,63 @@ export default function ToggleAnimationPage() {
     <ContentContainer>
       <Box position="relative">
         <Box display="flex" justifyContent="center">
-          <List className={classes.root}>
-            {members.map((member, i) => (
-              <Fragment key={member.id}>
-                <ListItem
-                  button
-                  selected={i === selectedIndex}
-                  alignItems="flex-start"
-                  onClick={handleClick(i)}
+          <Box position="relative">
+            <Box maxWidth={520} height="calc(100vh - 32px)" overflow="auto">
+              <List className={classes.root}>
+                {members.map((member, i) => (
+                  <Fragment key={member.id}>
+                    <ListItem
+                      button
+                      selected={i === selectedIndex}
+                      alignItems="flex-start"
+                      onClick={handleClick(i)}
+                    >
+                      <ListItemAvatar>
+                        <Avatar alt="Remy Sharp" src={member.avatar_url} />
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={member.name}
+                        secondary={
+                          <>
+                            <Typography
+                              component="span"
+                              variant="body2"
+                              className={classes.inline}
+                              color="textPrimary"
+                            >
+                              <GitHubIcon className={classes.icon} />
+                              {` ${member.login} `}
+                            </Typography>
+                            {member.bio ? member.bio : null}
+                          </>
+                        }
+                      />
+                    </ListItem>
+                    {i !== members.length - 1 && (
+                      <Divider variant="inset" component="li" />
+                    )}
+                  </Fragment>
+                ))}
+              </List>
+              <Zoom in={showFab} timeout={transitionDuration} unmountOnExit>
+                <Fab
+                  color="primary"
+                  aria-label="tweet"
+                  className={classes.fab}
+                  component="a"
+                  href={
+                    selectedIndex !== -1
+                      ? members[selectedIndex].twitter_url
+                      : '#'
+                  }
+                  target="_blank"
                 >
-                  <ListItemAvatar>
-                    <Avatar alt="Remy Sharp" src={member.avatar_url} />
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={member.name}
-                    secondary={
-                      <>
-                        <Typography
-                          component="span"
-                          variant="body2"
-                          className={classes.inline}
-                          color="textPrimary"
-                        >
-                          <GitHubIcon className={classes.icon} />
-                          {` ${member.login} `}
-                        </Typography>
-                        {member.bio ? member.bio : null}
-                      </>
-                    }
-                  />
-                </ListItem>
-                {i !== members.length - 1 && (
-                  <Divider variant="inset" component="li" />
-                )}
-              </Fragment>
-            ))}
-          </List>
+                  <TwitterIcon />
+                </Fab>
+              </Zoom>
+            </Box>
+          </Box>
         </Box>
-        <Zoom in={showFab} timeout={transitionDuration} unmountOnExit>
-          <Fab
-            color="primary"
-            aria-label="tweet"
-            className={classes.fab}
-            component="a"
-            href={
-              selectedIndex !== -1 ? members[selectedIndex].twitter_url : '#'
-            }
-            target="_blank"
-          >
-            <TwitterIcon />
-          </Fab>
-        </Zoom>
       </Box>
     </ContentContainer>
   );
